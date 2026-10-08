@@ -1,0 +1,12 @@
+export * from './flow'
+export * from './settings'
+export * from './search'
+export * from './breakpoint'
+export * from './rule'
+export * from './plugin-api'
+export * from './ipc'
+export * from './codegen'
+export * from './collection'
+export * from './workbench'
+
+export const APP_VERSION = '0.1.0'

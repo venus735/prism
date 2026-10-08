@@ -1,0 +1,89 @@
+@import 'tailwindcss';
+
+/*
+ * 主题体系：Tailwind 色阶重定向到运行时 CSS 变量。
+ * - zinc-*：`.light` 类翻转变量值（暗色 zinc 原值 / 亮色镜像反转），全 UI 的 bg/border/text 自动适配
+ * - sky-*：指向强调色变量 --ac-*，由 theme store 按 11 种强调色预设写入（亮色模式自动加深一档）
+ * - --code-*：JSON 代码配色 token，15 种预设由 theme store 写入
+ */
+@theme {
+  --color-zinc-100: var(--z-100);
+  --color-zinc-200: var(--z-200);
+  --color-zinc-300: var(--z-300);
+  --color-zinc-400: var(--z-400);
+  --color-zinc-500: var(--z-500);
+  --color-zinc-600: var(--z-600);
+  --color-zinc-700: var(--z-700);
+  --color-zinc-800: var(--z-800);
+  --color-zinc-900: var(--z-900);
+  --color-zinc-950: var(--z-950);
+  --color-sky-300: var(--ac-300);
+  --color-sky-400: var(--ac-400);
+  --color-sky-500: var(--ac-500);
+  --color-sky-600: var(--ac-600);
+  --color-sky-700: var(--ac-700);
+}
+
+:root {
+  --z-100: #f4f4f5;
+  --z-200: #e4e4e7;
+  --z-300: #d4d4d8;
+  --z-400: #a1a1aa;
+  --z-500: #71717a;
+  --z-600: #52525b;
+  --z-700: #3f3f46;
+  --z-800: #27272a;
+  --z-900: #18181b;
+  --z-950: #09090b;
+  /* 强调色/代码配色由 theme store 启动时写入，这里只放默认值防未初始化闪烁 */
+  --ac-300: #7dd3fc;
+  --ac-400: #38bdf8;
+  --ac-500: #0ea5e9;
+  --ac-600: #0284c7;
+  --ac-700: #0369a1;
+  --code-key: #38bdf8;
+  --code-str: #fbbf24;
+  --code-num: #a78bfa;
+  --code-lit: #f472b6;
+  --code-punct: #71717a;
+}
+
+:root.light {
+  --z-100: #18181b;
+  --z-200: #27272a;
+  --z-300: #3f3f46;
+  --z-400: #52525b;
+  --z-500: #71717a;
+  --z-600: #a1a1aa;
+  --z-700: #d4d4d8;
+  --z-800: #e4e4e7;
+  --z-900: #f4f4f5;
+  --z-950: #ffffff;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+  @apply bg-zinc-950 text-zinc-200 antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-700 rounded;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tj-key { color: var(--code-key); }
+.tj-str { color: var(--code-str); }
+.tj-num { color: var(--code-num); }
+.tj-lit { color: var(--code-lit); }
+.tj-punct { color: var(--code-punct); }

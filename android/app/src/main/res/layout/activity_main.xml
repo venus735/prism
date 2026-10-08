@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="整机流量经 SOCKS5 转发到 Mac 抓包调试"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="未连接"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/rootStatusText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Root 检测中…"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="12sp" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/vpnSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="VPN 隧道"
+        android:textSize="16sp" />
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/schemeToggle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:singleSelection="true"
+        app:selectionRequired="true">
+
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/schemeWifi"
+          style="@style/Widget.Material3.Button.OutlinedButton"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="Wi-Fi 无线" />
+
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/schemeUsb"
+          style="@style/Widget.Material3.Button.OutlinedButton"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="USB 数据线" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/hostLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Mac 局域网 IP">
+
+      <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/hostEdit"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:inputType="text"
+          android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="SOCKS5 端口">
+
+      <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/portEdit"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:inputType="number"
+          android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/autoStartSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="开机自动重连" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/scanButton"
+          style="@style/Widget.Material3.Button.TonalButton"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="6dp"
+          android:layout_weight="1"
+          android:text="扫码配对" />
+
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/testButton"
+          style="@style/Widget.Material3.Button.TonalButton"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="6dp"
+          android:layout_weight="1"
+          android:text="测试连接" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/appsButton"
+          style="@style/Widget.Material3.Button.OutlinedButton"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="6dp"
+          android:layout_weight="1"
+          android:text="分应用代理" />
+
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/caButton"
+          style="@style/Widget.Material3.Button.OutlinedButton"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="6dp"
+          android:layout_weight="1"
+          android:text="CA 证书安装" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/caStatusText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="CA 状态检测中…"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:lineSpacingExtra="3dp"
+        android:text="提示：Wi-Fi 方案需手机与 Mac 同一网络；USB 方案在 Mac 端设置页一键建立通道（adb reverse）后选「USB 数据线」即可，无需 Wi-Fi。HTTPS 解密需 Root 一键安装系统 CA 证书。本应用仅支持已 Root 设备。"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="12sp" />
+  </LinearLayout>
+</ScrollView>

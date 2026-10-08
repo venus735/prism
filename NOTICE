@@ -1,0 +1,9 @@
+Prism 棱镜
+Copyright (c) 2026 venus735
+
+This product bundles the following third-party components:
+
+- hev-socks5-tunnel (vendored at android/tun2socks)
+  Copyright (c) 2022 hev
+  Licensed under the MIT License.
+  See android/tun2socks/LICENSE for the full text.

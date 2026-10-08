@@ -1,0 +1,26 @@
+node_modules/
+out/
+dist/
+*.log
+.DS_Store
+.data/
+
+# local config / IDE
+.qoder/
+.idea/
+.vscode/
+local.properties
+android/local.properties
+
+# android build artifacts
+android/.gradle/
+android/.kotlin/
+android/.idea/
+android/app/build/
+android/**/.cxx/
+*.apk
+*.ap_
+*.aab
+
+# misc
+Thumbs.db

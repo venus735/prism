@@ -1,0 +1,47 @@
+appId: com.prism.debug
+productName: Prism
+copyright: Copyright © 2026
+
+asar: true
+npmRebuild: false
+
+directories:
+  output: dist
+  buildResources: build
+
+# 采用「仅排除」写法：保留 electron-vite 产出的 out/** 与生产依赖 node_modules，
+# electron-builder 会自动剔除 devDependencies（electron/typescript/vitest 等）。
+files:
+  - '!src/**'
+  - '!packages/**'
+  - '!android/**'
+  - '!docs/**'
+  - '!.qoder/**'
+  - '!dist/**'
+  - '!**/{tsconfig.base.json,tsconfig.node.json,tsconfig.web.json}'
+  - '!**/{vitest.config.ts,electron.vite.config.ts,h2-exp.cjs}'
+  - '!**/{PROGRESS.md,ITERATION-LOG.md}'
+  - '!**/*.map'
+  - '!**/node_modules/**/{test,tests,__tests__,docs,example,examples}/**'
+
+mac:
+  target:
+    - target: dmg
+      arch:
+        - arm64
+  category: public.app-category.developer-tools
+  # 无开发者证书：不签名、不公证。首次打开需右键「打开」或 xattr -cr 绕过 Gatekeeper。
+  identity: null
+  hardenedRuntime: false
+  gatekeeperAssess: false
+  artifactName: ${productName}-${version}-${arch}.${ext}
+
+dmg:
+  sign: false
+  contents:
+    - x: 130
+      y: 220
+    - x: 410
+      y: 220
+      type: link
+      path: /Applications
